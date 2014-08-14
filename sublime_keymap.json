@@ -1,0 +1,19 @@
+[
+	{ "keys": ["ctrl+space"], "command": "move", "args": {"by": "characters", "forward": true} },
+	
+	{ "keys": ["ctrl+j"], "command": "move", "args": {"by": "lines", "forward": true} },
+	{ "keys": ["ctrl+k"], "command": "move", "args": {"by": "lines", "forward": false} },
+
+	{ "keys": ["ctrl+l"], "command": "move", "args": {"by": "words", "forward": true} },
+	{ "keys": ["ctrl+n"], "command": "move", "args": {"by": "words", "forward": false} },
+
+
+
+	{ "keys": ["ctrl+shift+space"], "command": "insert", "args": {"characters": "_"}},
+	{ "keys": ["ctrl+shift+j"], "command": "insert_snippet", "args": {"contents": "(${0:$SELECTION})"}},
+	{ "keys": ["ctrl+shift+k"], "command": "insert_snippet", "args": {"contents": "[${0:$SELECTION}]"}},
+	{ "keys": ["ctrl+shift+l"], "command": "insert_snippet", "args": {"contents": "{${0:$SELECTION}}"}},
+	{ "keys": ["ctrl+shift+,"], "command": "insert_snippet", "args": {"contents": "<%= $0 %>"}},
+	{ "keys": ["super+shift+m"], "command": "insert_snippet", "args": {"contents": " # =>"}}
+
+]
