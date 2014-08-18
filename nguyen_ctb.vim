@@ -35,12 +35,13 @@ if !has("gui_running")
   let s:foreground = "c5c8c6"
   let s:background = "272727"
   let s:line = "282a2e"
-  let s:lightgray = "606060"
+  let s:lightgray = "707070"
   let s:comment = "484848"
   let s:lightred = "e93636"
   let s:red = "760808"
   let s:orange = "e68a48"
   let s:yellow = "e1a937"
+  let s:paleyellow = "ffffa7"
   let s:green = "529d52"
   let s:aqua = "8abeb7"
   let s:blue = "52c1ed"
@@ -327,8 +328,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" PHP Highlighting
 	call <SID>X("phpVarSelector", s:red, "", "")
 	call <SID>X("phpKeyword", s:purple, "", "")
-	call <SID>X("phpRepeat", s:purple, "", "")
-	call <SID>X("phpConditional", s:purple, "", "")
+	call <SID>X("phpRepeat", s:green, "", "")
+	call <SID>X("phpConditional", s:yellow, "", "")
 	call <SID>X("phpStatement", s:purple, "", "")
 	call <SID>X("phpMemberSelector", s:foreground, "", "")
 
@@ -347,7 +348,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	"call <SID>X("rubyCurlyBlock", s:purple, "", "")
   call <SID>X("rubyDefine", s:lightgray, "", "")
   call <SID>X("rubyException", s:red, "", "")
-	call <SID>X("rubyFunction", "ffffa7", "", "")
+	call <SID>X("rubyFunction", s:paleyellow, "", "")
 	call <SID>X("rubyInclude", s:lightgray, "", "")
   call <SID>X("rubyInstanceVariable", s:salmon, "", "")
   call <SID>X("rubyInteger", s:integer, "", "")
@@ -366,7 +367,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Python Highlighting
 	call <SID>X("pythonInclude", s:green, "", "")
 	call <SID>X("pythonStatement", s:green, "", "")
-	call <SID>X("pythonConditional", s:green, "", "")
+	call <SID>X("pythonConditional", s:yellow, "", "")
 	call <SID>X("pythonRepeat", s:green, "", "")
 	call <SID>X("pythonException", s:green, "", "")
 	call <SID>X("pythonFunction", s:blue, "", "")
@@ -386,14 +387,14 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" JavaScript Highlighting
 	call <SID>X("javaScriptBraces", s:foreground, "", "")
-	call <SID>X("javaScriptFunction", s:purple, "", "")
-	call <SID>X("javaScriptConditional", s:purple, "", "")
-	call <SID>X("javaScriptRepeat", s:purple, "", "")
+	call <SID>X("javaScriptFunction", s:paleyellow, "", "")
+	call <SID>X("javaScriptConditional", s:yellow, "", "")
+	call <SID>X("javaScriptRepeat", s:green, "", "")
 	call <SID>X("javaScriptNumber", s:integer, "", "")
 	call <SID>X("javaScriptMember", s:orange, "", "")
 
 	" HTML Highlighting
-	call <SID>X("htmlTag", s:red, "", "")
+	call <SID>X("htmlTag", s:paleyellow, "", "")
 	call <SID>X("htmlTagName", s:red, "", "")
 	call <SID>X("htmlArg", s:red, "", "")
 	call <SID>X("htmlScriptTag", s:red, "", "")
