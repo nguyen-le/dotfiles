@@ -1,6 +1,6 @@
 set t_Co=256
 set nocompatible  
-filetype off
+  filetype off
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/fugitive.vim
 set rtp+=~/.vim/bundle/vundle.vim
@@ -8,10 +8,16 @@ call vundle#begin()
 
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'ervandew/supertab'
 Bundle 't9md/vim-ruby-xmpfilter'
 Bundle 'Lokaltog/vim-easymotion'
+
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'w1zeman1p/vim-snippets'
+Bundle 'w1zeman1p/vim-snipmate'
 call vundle#end()
 
 filetype plugin indent on
@@ -30,6 +36,14 @@ let mapleader = ","
 let g:mapleader = ","
 nmap <leader>w :w! <cr>
 nmap <leader>q :q! <cr>
+nmap <enter> i<enter><esc>l
+nmap <tab> i<space><space><esc>l
+nmap <leader>/ 0i#<esc>
+nmap wj :winc j <cr>
+nmap wk :winc k <cr>
+nmap wl :winc l <cr>
+nmap wh :winc h <cr>
+
 nmap gnt :NERDTree <cr>
 
 let g:xmpfilter_cmd = "seeing_is_believing"
@@ -66,6 +80,6 @@ map <Leader>a :call RunAllSpecs()<CR>
 "hi CursorLine cterm=NONE ctermbg=darkred ctermfg=blue
 colorscheme nguyen_ctb
 let ruby_operators = 1
-let ruby_space_errors = 1
+"let ruby_space_errors = 1
 "highlight NonText guibg=#060606
 "highlight Folded  guibg=#0A0A0A guifg=#9090D0
