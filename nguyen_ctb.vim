@@ -52,7 +52,7 @@ if !has("gui_running")
   let s:window = "000000"
 end
 
-"set background=dark
+set background=dark
 hi clear
 syntax reset
 
