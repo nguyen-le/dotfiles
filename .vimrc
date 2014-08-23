@@ -1,10 +1,12 @@
 set t_Co=256
 set nocompatible  
-  filetype off
+filetype off
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/fugitive.vim
 set rtp+=~/.vim/bundle/vundle.vim
+set laststatus=2
 call vundle#begin()
+
 
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdtree'
@@ -13,12 +15,18 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'ervandew/supertab'
 Bundle 't9md/vim-ruby-xmpfilter'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'bling/vim-airline'
+Bundle 'bling/vim-bufferline'
 
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'w1zeman1p/vim-snippets'
 Bundle 'w1zeman1p/vim-snipmate'
 call vundle#end()
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '>'
+let g:bufferline_echo = 0
 
 filetype plugin indent on
 
@@ -29,11 +37,13 @@ set ai
 set si
 set rnu
 set list listchars=tab:……,trail:·
+set noswapfile
 "»»
 nnoremap j gj
 nnoremap k gk
 let mapleader = ","
 let g:mapleader = ","
+nmap gnt :NERDTree <cr>
 nmap <leader>w :w! <cr>
 nmap <leader>q :q! <cr>
 nmap <enter> i<enter><esc>l
@@ -44,7 +54,12 @@ nmap wk :winc k <cr>
 nmap wl :winc l <cr>
 nmap wh :winc h <cr>
 
-nmap gnt :NERDTree <cr>
+imap <c-d> <esc>ciw
+autocmd FileType ruby imap <leader>aa attr_accessor
+autocmd FileType ruby imap <leader>ar attr_reader
+
+
+let g:airline#extensions#tabline#enabled = 1
 
 let g:xmpfilter_cmd = "seeing_is_believing"
 
@@ -64,6 +79,7 @@ autocmd FileType ruby imap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
 autocmd FileType ruby nmap <buffer> ,e <Plug>(seeing_is_believing-run)
 autocmd FileType ruby xmap <buffer> ,e <Plug>(seeing_is_believing-run)
 autocmd FileType ruby imap <buffer> ,e <Plug>(seeing_is_believing-run)
+
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " RSpec.vim mappings
@@ -80,6 +96,9 @@ map <Leader>a :call RunAllSpecs()<CR>
 "hi CursorLine cterm=NONE ctermbg=darkred ctermfg=blue
 colorscheme nguyen_ctb
 let ruby_operators = 1
+hi CursorLine cterm=NONE ctermbg=235 ctermfg=white
 "let ruby_space_errors = 1
 "highlight NonText guibg=#060606
 "highlight Folded  guibg=#0A0A0A guifg=#9090D0
+let g:colors_name = "nguyen_ctb"
+let g:airline_theme='tomorrow'
