@@ -7,7 +7,6 @@ set rtp+=~/.vim/bundle/vundle.vim
 set laststatus=2
 call vundle#begin()
 
-
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
@@ -17,6 +16,8 @@ Bundle 't9md/vim-ruby-xmpfilter'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
+Bundle 'shougo/vimshell'
+Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
 
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -44,16 +45,24 @@ nnoremap k gk
 let mapleader = ","
 let g:mapleader = ","
 nmap gnt :NERDTree <cr>
+"save, quit
 nmap <leader>w :w! <cr>
 nmap <leader>q :q! <cr>
+"whitespace
 nmap <enter> i<enter><esc>l
 nmap <tab> i<space><space><esc>l
+"comment
 nmap <leader>/ 0i#<esc>
+"navigating through splits
 nmap wj :winc j <cr>
 nmap wk :winc k <cr>
 nmap wl :winc l <cr>
 nmap wh :winc h <cr>
-
+"shell"
+nmap <leader>sh :VimShell <cr>
+"buffer
+nmap <leader>ls :ls <cr>
+nmap <leader>b :buffers<cr>:b<space>
 imap <c-d> <esc>ciw
 autocmd FileType ruby imap <leader>aa attr_accessor
 autocmd FileType ruby imap <leader>ar attr_reader
@@ -100,5 +109,6 @@ hi CursorLine cterm=NONE ctermbg=235 ctermfg=white
 "let ruby_space_errors = 1
 "highlight NonText guibg=#060606
 "highlight Folded  guibg=#0A0A0A guifg=#9090D0
-let g:colors_name = "nguyen_ctb"
+"let g:colors_name = "nguyen_ctb"
 let g:airline_theme='tomorrow'
+hi SpellCap ctermbg=52

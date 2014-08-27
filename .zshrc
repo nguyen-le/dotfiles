@@ -9,8 +9,8 @@ compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=100
-SAVEHIST=100
+HISTSIZE=800
+SAVEHIST=800
 bindkey -e
 # End of lines configured by zsh-newuser-install
 autoload -U colors && colors
@@ -21,12 +21,14 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 alias ls='ls -GFh'
 alias cdruby='cd ~/Documents/ruby'
-alias bashp='vim .bash_profile'
+alias bashp='v .bash_profile'
 alias food='open ~/Documents/home/eats_english.pdf'
 alias mysqlstart='mysql.server start'
 alias mysqlstop='mysql.server stop'
 alias rails4.0='rails _4.0.8_'
- 
+alias v='/usr/local/Cellar/macvim/7.4-73/MacVim.app/Contents/MacOS/Vim'
+EDITOR=/usr/local/Cellar/macvim/7.4-73/MacVim.app/Contents/MacOS/Vim
+alias emacs="/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
