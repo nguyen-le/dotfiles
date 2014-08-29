@@ -8,6 +8,7 @@ let s:background = "272727"
 let s:selection = "373b41"
 let s:line = "282a2e"
 let s:lightgray = "606060"
+let s:xlightgray = "806060"
 let s:comment = "464646"
 let s:lightred = "e93636"
 let s:red = "760808"
@@ -45,7 +46,7 @@ if !has("gui_running")
   let s:green = "529d52"
   let s:aqua = "8abeb7"
   let s:blue = "52c1ed"
-  let s:blue = "39b1ed"
+"  let s:blue = "39b1ed"
   let s:darkblue = "19218c"
   let s:purple = "513261"
   let s:darkpurple = "392cd0"
@@ -299,7 +300,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Standard Highlighting
 	call <SID>X("Comment", s:lightgray, "", "")
 	call <SID>X("Todo", s:comment, s:background, "")
-	call <SID>X("Title", s:comment, "", "")
+	call <SID>X("Title", s:yellow, "", "")
 	call <SID>X("Identifier", s:red, "", "none")
 	call <SID>X("Statement", s:foreground, "", "")
 	call <SID>X("Conditional", s:foreground, "", "")
@@ -309,7 +310,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Constant", s:orange, "", "")
 	call <SID>X("String", s:integer, "", "")
 	call <SID>X("Special", s:foreground, "", "")
-	call <SID>X("PreProc", s:purple, "", "")
+	call <SID>X("PreProc", s:yellow, "", "")
 	call <SID>X("Operator", "bb7bd7", "", "none")
 	call <SID>X("Type", s:blue, "", "none")
 	call <SID>X("Define", s:red, "", "none")
@@ -342,7 +343,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("rubyBlockParameter", s:salmon, "", "")
 	call <SID>X("rubyBoolean", s:integer, "", "underline")
   call <SID>X("rubyClass", s:lightgray, "", "")
-	call <SID>X("rubyConditional", s:yellow, "", "")
+	call <SID>X("rubyConditional", s:orange, "", "")
 	call <SID>X("rubyConstant", s:yellow, "", "")
   call <SID>X("rubyControl", s:green, "", "")
 	"call <SID>X("rubyCurlyBlock", s:purple, "", "")
@@ -394,10 +395,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("javaScriptMember", s:orange, "", "")
 
 	" HTML Highlighting
-	call <SID>X("htmlTag", s:paleyellow, "", "")
-	call <SID>X("htmlTagName", s:red, "", "")
-	call <SID>X("htmlArg", s:red, "", "")
-	call <SID>X("htmlScriptTag", s:red, "", "")
+	call <SID>X("htmlTag", "bb7bd7", "", "")
+	call <SID>X("htmlEndTag", "bb7bd7", "", "")
+	call <SID>X("htmlTagName", s:aqua, "", "")
+	call <SID>X("htmlArg", s:xlightgray, "", "")
+	call <SID>X("htmlScriptTag", s:paleyellow, "", "")
 
 	" Diff Highlighting
   let s:diffbackground = "494e56"
@@ -411,7 +413,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
     " ShowMarks Highlighting
     call <SID>X("ShowMarksHLl", s:orange, s:background, "none")
-    call <SID>X("ShowMarksHLo", s:purple, s:background, "none")
+    call <SID>X("ShowMarksHLo", s:palepurple, s:background, "none")
     call <SID>X("ShowMarksHLu", s:yellow, s:background, "none")
     call <SID>X("ShowMarksHLm", s:aqua, s:background, "none")
 

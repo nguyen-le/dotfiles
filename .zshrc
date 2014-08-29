@@ -14,6 +14,10 @@ SAVEHIST=800
 bindkey -e
 # End of lines configured by zsh-newuser-install
 autoload -U colors && colors
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+
 eval "$(rbenv init -)"
 export PS1="%{$fg[cyan]%}%n%{$fg[green]%}@%m:%{$fg[magenta]%}~%d%{$reset_color%}"$'\n'"%{$fg[red]%}$%{$reset_color%}"
 export CLICOLOR=1
@@ -26,7 +30,7 @@ alias food='open ~/Documents/home/eats_english.pdf'
 alias mysqlstart='mysql.server start'
 alias mysqlstop='mysql.server stop'
 alias rails4.0='rails _4.0.8_'
-alias v='/usr/local/Cellar/macvim/7.4-73/MacVim.app/Contents/MacOS/Vim'
+alias v='vim'
 EDITOR=/usr/local/Cellar/macvim/7.4-73/MacVim.app/Contents/MacOS/Vim
 alias emacs="/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw"
 ### Added by the Heroku Toolbelt

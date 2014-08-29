@@ -3,7 +3,7 @@ set nocompatible
 filetype off
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/fugitive.vim
-set rtp+=~/.vim/bundle/vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 set laststatus=2
 call vundle#begin()
 
@@ -17,7 +17,9 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'shougo/vimshell'
+Bundle 'Shougo/unite.vim'
 Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
+Bundle 'tpope/vim-rails'
 
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -61,12 +63,15 @@ nmap wh :winc h <cr>
 "shell"
 nmap <leader>sh :VimShell <cr>
 "buffer
-nmap <leader>ls :ls <cr>
+nmap <leader>ls :buffers<cr>
 nmap <leader>b :buffers<cr>:b<space>
 imap <c-d> <esc>ciw
 autocmd FileType ruby imap <leader>aa attr_accessor
 autocmd FileType ruby imap <leader>ar attr_reader
-
+"Unite
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nmap <leader>t :UniteWithProjectDir -start-insert file<cr>
+nmap <leader>b :Unite buffer<cr>
 
 let g:airline#extensions#tabline#enabled = 1
 
@@ -94,10 +99,10 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " RSpec.vim mappings
 let g:rspec_runner = "os_x_iterm"
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+"map <Leader>t :call RunCurrentSpecFile()<CR>
+"map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
 
 " Color scheme
 "hi LineNr ctermfg=237 ctermbg=233
