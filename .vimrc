@@ -3,7 +3,7 @@ set nocompatible
 filetype off
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/fugitive.vim
-set rtp+=~/.vim/bundle/vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 set laststatus=2
 call vundle#begin()
 
@@ -18,11 +18,16 @@ Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'shougo/vimshell'
 Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
+Bundle 'Shougo/unite.vim'
+Bundle 'tpope/vim-rails'
+Bundle 'jiangmiao/auto-pairs'
 
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'w1zeman1p/vim-snippets'
-Bundle 'w1zeman1p/vim-snipmate'
+Bundle 'honza/vim-snippets'
+"Bundle 'w1zeman1p/vim-snippets'
+"Bundle 'w1zeman1p/vim-snipmate'
+Bundle 'garbas/vim-snipmate'
 call vundle#end()
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
@@ -50,7 +55,9 @@ nmap <leader>w :w! <cr>
 nmap <leader>q :q! <cr>
 "whitespace
 nmap <enter> i<enter><esc>l
+nmap <space> i<space><esc>l
 nmap <tab> i<space><space><esc>l
+imap <c-l> <esc>la
 "comment
 nmap <leader>/ 0i#<esc>
 "navigating through splits
@@ -62,8 +69,11 @@ nmap wh :winc h <cr>
 nmap <leader>sh :VimShell <cr>
 "buffer
 nmap <leader>ls :ls <cr>
-nmap <leader>b :buffers<cr>:b<space>
+"nmap <leader>b :buffers<cr>:b<space>
 imap <c-d> <esc>ciw
+"Unite
+nmap <leader>b :Unite buffer<cr>
+
 autocmd FileType ruby imap <leader>aa attr_accessor
 autocmd FileType ruby imap <leader>ar attr_reader
 
@@ -94,10 +104,14 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " RSpec.vim mappings
 let g:rspec_runner = "os_x_iterm"
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+"snipMate
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+"map <Leader>t :call RunCurrentSpecFile()<CR>
+"map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
 
 " Color scheme
 "hi LineNr ctermfg=237 ctermbg=233
