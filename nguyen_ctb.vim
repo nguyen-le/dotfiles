@@ -23,7 +23,7 @@ let s:paleblue = "3597c4"
 let s:darkblue = "19218c"
 let s:purple = "6a3f7f"
 let s:salmon = "c26b6b"
-let s:palepurple = "76af58"
+let s:palegreen = "76af58"
 let s:darkpurple = "392cd0"
 let s:window = "000000"
 let s:integer = "5976c4"
@@ -58,7 +58,6 @@ hi clear
 syntax reset
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
-<<<<<<< HEAD
   " Returns an approximate grey index for the given grey level
   fun <SID>grey_number(x)
     if &t_Co == 88
@@ -299,10 +298,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   " Standard Highlighting
   call <SID>X("Comment", s:lightgray, "", "")
   call <SID>X("Todo", s:comment, s:background, "")
+  call <SID>X("Boolean", s:integer, "", "underline")
   call <SID>X("Title", s:yellow, "", "")
   call <SID>X("Identifier", s:red, "", "none")
   call <SID>X("Statement", s:foreground, "", "")
-  call <SID>X("Conditional", s:foreground, "", "")
+  call <SID>X("Conditional", s:orange, "", "")
   call <SID>X("Repeat", s:foreground, "", "")
   call <SID>X("Structure", s:purple, "", "")
   call <SID>X("Function", s:blue, "", "")
@@ -348,7 +348,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   "call <SID>X("rubyCurlyBlock", s:purple, "", "")
   call <SID>X("rubyDefine", s:lightgray, "", "")
   call <SID>X("rubyException", s:red, "", "")
-  call <SID>X("rubyFunction", s:paleyellow, "", "")
+  call <SID>X("rubyFunction", s:paleyellow, "", "bold")
   call <SID>X("rubyIdentifier", s:salmon, "", "")
   call <SID>X("rubyInclude", s:lightgray, "", "")
   "call <SID>X("rubyInstanceVariable", s:salmon, "", "")
@@ -387,8 +387,19 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("coffeeConditional", s:purple, "", "")
 
   " JavaScript Highlighting
-  call <SID>X("javaScriptBraces", s:foreground, "", "")
-  call <SID>X("javaScriptFunction", s:paleyellow, "", "")
+  call <SID>X("Number", s:blue, "", "")
+  "call <SID>X("jsBraces", s:lightgray, "", "")
+  "call <SID>X("jsParens", s:lightgray, "", "")
+  call <SID>X("jsFunction", s:lightgray, "", "")
+  call <SID>X("jsFuncName", s:yellow, "", "bold")
+  call <SID>X("jsFuncArgs", s:salmon, "", "")
+  call <SID>X("jsFuncBraces", s:lightgray, "", "")
+  call <SID>X("jsGlobalObjects", s:palegreen, "", "")
+  call <SID>X("jsKeyword", s:green, "", "")
+  call <SID>X("jsPrototype", s:salmon, "", "")
+  call <SID>X("jsRepeat", s:green, "", "")
+  call <SID>X("jsReturn", s:palegreen, "", "")
+  call <SID>X("jsStorageClass", s:lightgray, "", "")
   call <SID>X("javaScriptConditional", s:yellow, "", "")
   call <SID>X("javaScriptRepeat", s:green, "", "")
   call <SID>X("javaScriptNumber", s:integer, "", "")
@@ -413,7 +424,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
     " ShowMarks Highlighting
     call <SID>X("ShowMarksHLl", s:orange, s:background, "none")
-    call <SID>X("ShowMarksHLo", s:palepurple, s:background, "none")
+    call <SID>X("ShowMarksHLo", s:palegreen, s:background, "none")
     call <SID>X("ShowMarksHLu", s:yellow, s:background, "none")
     call <SID>X("ShowMarksHLm", s:aqua, s:background, "none")
 
