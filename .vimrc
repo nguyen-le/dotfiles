@@ -3,7 +3,7 @@ set nocompatible
 filetype off
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/fugitive.vim
-set rtp+=~/.vim/bundle/Vundle.vim
+set runtimepath^=~/.vim/bundle/Vundle.vim
 set laststatus=2
 call vundle#begin()
 
@@ -20,7 +20,10 @@ Bundle 'shougo/vimshell'
 Bundle 'Shougo/unite.vim'
 Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
 Bundle 'tpope/vim-rails'
+Bundle 'godlygeek/tabular'
 
+Bundle 'tpope/vim-fugitive'
+Bundle 'kien/ctrlp.vim'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'w1zeman1p/vim-snippets'
@@ -44,7 +47,7 @@ set noswapfile
 "»»
 nnoremap j gj
 nnoremap k gk
-let mapleader = ","
+let mapleader   = ","
 let g:mapleader = ","
 nmap gnt :NERDTree <cr>
 "save, quit
@@ -53,6 +56,7 @@ nmap <leader>q :q! <cr>
 "whitespace
 nmap <enter> i<enter><esc>l
 nmap <tab> i<space><space><esc>l
+nmap <space> i<space><esc>l
 "comment
 nmap <leader>/ 0i#<esc>
 "navigating through splits
@@ -72,7 +76,11 @@ autocmd FileType ruby imap <leader>ar attr_reader
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nmap <leader>t :UniteWithProjectDir -start-insert file<cr>
 nmap <leader>b :Unite buffer<cr>
-
+"Tabularize
+nmap <leader>a= :Tabularize /=<cr>
+vmap <leader>a= :Tabularize /=<cr>
+nmap <leader>a: :Tabularize /:\zs<cr>
+vmap <leader>a: :Tabularize /:\zs<cr>
 let g:airline#extensions#tabline#enabled = 1
 
 let g:xmpfilter_cmd = "seeing_is_believing"
@@ -110,10 +118,12 @@ let g:rspec_runner = "os_x_iterm"
 "hi CursorLine cterm=NONE ctermbg=darkred ctermfg=blue
 colorscheme nguyen_ctb
 let ruby_operators = 1
-hi CursorLine cterm=NONE ctermbg=235 ctermfg=white
+hi CursorLine cterm = NONE ctermbg = 235 ctermfg = white
+
 "let ruby_space_errors = 1
-"highlight NonText guibg=#060606
-"highlight Folded  guibg=#0A0A0A guifg=#9090D0
+"highlight NonText guibg = #060606
+"highlight Folded  guibg = #0A0A0A guifg = #9090D0
 "let g:colors_name = "nguyen_ctb"
-let g:airline_theme='tomorrow'
-hi SpellCap ctermbg=52
+
+let g:airline_theme = 'tomorrow'
+hi SpellCap ctermbg = 52
