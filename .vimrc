@@ -8,30 +8,31 @@ set runtimepath^=~/.vim/bundle/Vundle.vim
 set laststatus=2
 call vundle#begin()
 
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'ervandew/supertab'
-Bundle 't9md/vim-ruby-xmpfilter'
-Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'thoughtbot/vim-rspec'
+
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
+Bundle 'ervandew/supertab'
+Bundle 'garbas/vim-snipmate'
+Bundle 'godlygeek/tabular'
+Bundle 'honza/vim-snippets'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'pangloss/vim-javascript'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
 Bundle 'shougo/vimshell'
 Bundle 'Shougo/unite.vim'
-Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
+Bundle 't9md/vim-ruby-xmpfilter'
 Bundle 'tpope/vim-rails'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'godlygeek/tabular'
-
 Bundle 'tpope/vim-fugitive'
-Bundle 'kien/ctrlp.vim'
 Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'honza/vim-snippets'
-"Bundle 'w1zeman1p/vim-snippets'
-"Bundle 'w1zeman1p/vim-snipmate'
-Bundle 'garbas/vim-snipmate'
+Bundle 'wookiehangover/jshint.vim'
+Bundle 'vim-ruby/vim-ruby'
+
 call vundle#end()
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
@@ -42,6 +43,7 @@ filetype plugin indent on
 
 syntax on 
 set number ruler tabstop=2 shiftwidth=2
+autocmd FileType javascript setlocal tabstop=4 shiftwidth=4
 set et|retab
 set ai
 set si
@@ -60,7 +62,7 @@ nmap <leader>q :q! <cr>
 "whitespace
 nmap <enter> i<enter><esc>l
 nmap <space> i<space><esc>l
-nmap <tab> i<space><space><esc>l
+nmap <tab> >>
 imap <c-l> <esc>la
 "comment
 nmap <leader>/ 0i#<esc>
@@ -113,15 +115,18 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " RSpec.vim mappings
 let g:rspec_runner = "os_x_iterm"
+"map <Leader>t :call RunCurrentSpecFile()<CR>
+"map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
 
 "snipMate
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
-"map <Leader>t :call RunCurrentSpecFile()<CR>
-"map <Leader>s :call RunNearestSpec()<CR>
-"map <Leader>l :call RunLastSpec()<CR>
-"map <Leader>a :call RunAllSpecs()<CR>
+
+"JsHint
+let JSHintUpdateWriteOnly=1
 
 " Color scheme
 "hi LineNr ctermfg=237 ctermbg=233
@@ -137,4 +142,6 @@ hi CursorLine cterm = NONE ctermbg = 235 ctermfg = white
 "let g:colors_name = "nguyen_ctb"
 
 let g:airline_theme = 'tomorrow'
+
+hi SpellBad ctermbg = 52
 hi SpellCap ctermbg = 52
