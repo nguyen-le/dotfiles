@@ -7,7 +7,6 @@ set runtimepath^=~/.vim/bundle/fugitive.vim
 set runtimepath^=~/.vim/bundle/Vundle.vim
 set laststatus=2
 call vundle#begin()
-
 "Bundle 'thoughtbot/vim-rspec'
 
 Bundle 'bling/vim-airline'
@@ -27,6 +26,7 @@ Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
 Bundle 'shougo/vimshell'
 Bundle 'Shougo/unite.vim'
 Bundle 't9md/vim-ruby-xmpfilter'
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tomtom/tlib_vim'
@@ -57,6 +57,7 @@ let mapleader   = ","
 let g:mapleader = ","
 nmap gnt :NERDTree <cr>
 "save, quit
+imap kj <esc>
 nmap <leader>w :w! <cr>
 nmap <leader>q :q! <cr>
 "whitespace
@@ -128,13 +129,14 @@ let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 "JsHint
 let JSHintUpdateWriteOnly=1
 
+au BufRead *.ejs set filetype=eruby syntax=html 
+
 " Color scheme
 "hi LineNr ctermfg=237 ctermbg=233
-"hi CursorLineNr ctermfg=166 ctermbg=233
-"hi CursorLine cterm=NONE ctermbg=darkred ctermfg=blue
+"hi CursorLineNr ctermfg = 166 ctermbg = 233
+"hi cursorline cterm = NONE ctermbg = 235 ctermfg = white
 colorscheme nguyen_ctb
 let ruby_operators = 1
-hi CursorLine cterm = NONE ctermbg = 235 ctermfg = white
 
 "let ruby_space_errors = 1
 "highlight NonText guibg = #060606
