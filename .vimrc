@@ -29,6 +29,7 @@ Bundle 't9md/vim-ruby-xmpfilter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tlib_vim'
 Bundle 'wookiehangover/jshint.vim'
 Bundle 'vim-ruby/vim-ruby'
@@ -50,6 +51,7 @@ set si
 set rnu
 set list listchars=tab:……,trail:·
 set noswapfile
+set cc=80
 "»»
 nnoremap j gj
 nnoremap k gk
@@ -57,7 +59,7 @@ let mapleader   = ","
 let g:mapleader = ","
 nmap gnt :NERDTree <cr>
 "save, quit
-imap kj <esc>
+imap kj <esc>l
 nmap <leader>w :w! <cr>
 nmap <leader>q :q! <cr>
 "whitespace
@@ -65,6 +67,7 @@ nmap <enter> i<enter><esc>l
 nmap <space> i<space><esc>l
 nmap <tab> >>
 imap <c-l> <esc>la
+imap <c-e> <esc>A
 "comment
 nmap <leader>/ 0i#<esc>
 "navigating through splits

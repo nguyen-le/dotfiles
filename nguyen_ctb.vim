@@ -297,7 +297,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
   " Standard Highlighting
   call <SID>X("Comment", s:lightgray, "", "")
-  call <SID>X("Todo", s:comment, s:background, "")
+  call <SID>X("Todo", s:yellow, s:background, "")
   call <SID>X("Boolean", s:integer, "", "underline")
   call <SID>X("Title", s:yellow, "", "")
   call <SID>X("Identifier", s:red, "", "none")
@@ -413,6 +413,14 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("htmlTagName", s:aqua, "", "")
   call <SID>X("htmlArg", s:xlightgray, "", "")
   call <SID>X("htmlScriptTag", s:aqua, "", "")
+
+  " CSS Highlighting
+  call <SID>X("cssBraces", s:yellow, "","")
+  call <SID>X("cssBraceError", s:lightred, "","")
+  call <SID>X("cssClassName", s:salmon, "","")
+  call <SID>X("cssFontAttr", s:yellow, "","")
+  call <SID>X("cssPseudoClassId", s:yellow, "","")
+  call <SID>X("cssTagName", s:yellow, "","")
 
   " Diff Highlighting
   let s:diffbackground = "494e56"
