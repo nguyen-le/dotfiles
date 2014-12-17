@@ -12,11 +12,12 @@ let s:lightgray = "707070"
 let s:xlightgray = "806060"
 let s:comment = "464646"
 let s:lightred = "e93636"
-let s:red = "831515"
+let s:red = "9D1616"
 let s:orange = "e68a48"
 let s:yellow = "eeb23a"
 let s:paleyellow = "ffffa7"
-let s:green = "529d52"
+let s:green = "3db83d"
+let s:darkgreen = "6fad6f"
 let s:aqua = "8abeb7"
 let s:blue = "39b1ed"
 let s:paleblue = "3597c4"
@@ -39,11 +40,10 @@ if !has("gui_running")
   let s:lightgray = "808080"
   let s:comment = "484848"
   let s:lightred = "e93636"
-  let s:red = "760808"
+  let s:red = "9d1616"
   let s:orange = "e68a48"
   let s:yellow = "e1a937"
   let s:paleyellow = "ffffa7"
-  let s:green = "529d52"
   let s:aqua = "8abeb7"
   let s:blue = "52c1ed"
 "  let s:blue = "39b1ed"
@@ -304,20 +304,21 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("Statement", s:foreground, "", "")
   call <SID>X("Conditional", s:orange, "", "")
   call <SID>X("Repeat", s:foreground, "", "")
-  call <SID>X("Structure", s:purple, "", "")
+  call <SID>X("Structure", s:orange, "", "")
   call <SID>X("Function", s:blue, "", "")
   call <SID>X("Constant", s:orange, "", "")
-  call <SID>X("String", s:integer, "", "")
+  call <SID>X("String", s:darkgreen, "", "")
   call <SID>X("Special", s:foreground, "", "")
   call <SID>X("PreProc", s:yellow, "", "")
   call <SID>X("Operator", "bb7bd7", "", "none")
   call <SID>X("Type", s:blue, "", "none")
-  call <SID>X("Define", s:red, "", "none")
+  call <SID>X("Define", s:yellow, "", "none")
   call <SID>X("Include", s:blue, "", "")
+  call <SID>X("Error", s:red, "", "")
   "call <SID>X("Ignore", "666666", "", "")
 
   " Vim Highlighting
-  call <SID>X("vimCommand", s:red, "", "none")
+  call <SID>X("vimCommand", s:orange, "", "none")
 
   " C Highlighting
   call <SID>X("cType", s:yellow, "", "")
@@ -326,11 +327,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("cRepeat", s:purple, "", "")
 
   " PHP Highlighting
-  call <SID>X("phpVarSelector", s:red, "", "")
-  call <SID>X("phpKeyword", s:purple, "", "")
+  call <SID>X("phpVarSelector", s:salmon, "", "")
+  call <SID>X("phpIdentifier", s:salmon, "", "")
+  call <SID>X("phpKeyword", s:yellow, "", "")
   call <SID>X("phpRepeat", s:green, "", "")
   call <SID>X("phpConditional", s:yellow, "", "")
-  call <SID>X("phpStatement", s:purple, "", "")
+  call <SID>X("phpStatement", s:green, "", "")
   call <SID>X("phpMemberSelector", s:foreground, "", "")
 
   " Ruby Highlighting
@@ -390,17 +392,24 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("Number", s:blue, "", "")
   "call <SID>X("jsBraces", s:lightgray, "", "")
   "call <SID>X("jsParens", s:lightgray, "", "")
-  call <SID>X("jsFunction", s:green, "", "")
+  call <SID>X("jsBraces", s:orange, "", "")
+  call <SID>X("jsException", s:red, "", "")
+  call <SID>X("jsFunction", s:darkgreen, "", "")
   call <SID>X("jsFuncName", s:yellow, "", "bold")
   call <SID>X("jsFuncArgs", s:salmon, "", "")
-  call <SID>X("jsFuncBraces", s:green, "", "")
+  call <SID>X("jsFuncBraces", s:darkgreen, "", "")
+  call <SID>X("jsFuncParens", s:darkgreen, "", "")
   call <SID>X("jsGlobalObjects", s:palegreen, "", "")
   call <SID>X("jsKeyword", s:green, "", "")
   call <SID>X("jsObjectKey", s:salmon, "", "")
+  call <SID>X("jsOperator", "bb7bd7", "", "")
   call <SID>X("jsFunctionKey", s:yellow, "", "")
+  call <SID>X("jsParens", s:yellow, "", "")
   call <SID>X("jsPrototype", s:salmon, "", "")
   call <SID>X("jsRepeat", s:green, "", "")
-  call <SID>X("jsReturn", s:palegreen, "", "")
+  call <SID>X("jsReturn", s:green, "", "")
+  call <SID>X("jsSpecial", "bb7bd7", "", "")
+  call <SID>X("jsThis", s:salmon, "", "")
   call <SID>X("jsStorageClass", s:salmon, "", "")
   call <SID>X("javaScriptConditional", s:yellow, "", "")
   call <SID>X("javaScriptRepeat", s:green, "", "")

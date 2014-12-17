@@ -24,13 +24,20 @@ export CLICOLOR=1
 set LSCOLORS=ExFxBxDxCxegedabagacad
 
 alias ls='ls -GFh'
-alias cdruby='cd ~/Documents/ruby'
 alias bashp='v .bash_profile'
+alias cdruby='cd ~/Documents/ruby'
 alias food='open ~/Documents/home/eats_english.pdf'
+alias ga='git add'
+alias gc='git commit -m'
+alias gd='git diff'
+alias gpr='git pull --rebase'
+alias gr='git rebase -i'
+alias gs='git status'
 alias mysql='/usr/local/mysql/bin/mysql'
 alias mysqlstart='mysql.server start'
 alias mysqlstop='mysql.server stop'
 alias rails4.0='rails _4.0.8_'
+alias sshvm='ssh root@192.168.115.128'
 alias v='/Applications/mvim -v'
 alias gv='/Applications/mvim'
 ### Added by the Heroku Toolbelt
