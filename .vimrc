@@ -1,5 +1,6 @@
 set t_Co=256
-set nocompatible  
+set encoding=utf-8
+set nocompatible
 filetype off
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/fugitive.vim
@@ -9,6 +10,7 @@ set laststatus=2
 call vundle#begin()
 "Bundle 'thoughtbot/vim-rspec'
 
+Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'ervandew/supertab'
@@ -16,15 +18,20 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'godlygeek/tabular'
 Bundle 'honza/vim-snippets'
 Bundle 'jiangmiao/auto-pairs'
+Bundle 'joonty/vdebug'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'majutsushi/tagbar'
 Bundle 'pangloss/vim-javascript'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
 Bundle 'shougo/vimshell'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shutnik/jshint2.vim'
 Bundle 't9md/vim-ruby-xmpfilter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-rails'
@@ -35,17 +42,53 @@ Bundle 'wookiehangover/jshint.vim'
 Bundle 'vim-ruby/vim-ruby'
 
 call vundle#end()
-"let g:airline#extensions#tabline#enabled = 1
+let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_regexp = 1
+"let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#symbol = '" "'
+let g:airline_powerline_fonts=1
+"set guifont=Inconsolata\ for\ Powerline
 "let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '>'
-let g:bufferline_echo = 0
+"let g:airline#extensions#tabline#left_alt_sep = '.'
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline_detect_iminsert=0
+let g:airline_inactive_collapse=1
+let g:airline_section_c = '%f'
+let g:airline_theme = 'tomorrow'
+let g:bufferline_echo = 1
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline#extensions#default#section_truncate_width = {
+		\ 'b': 79,
+		\ 'x': 60,
+		\ 'y': 88,
+		\ 'z': 45,
+		\ }
+let g:airline#extensions#default#layout = [
+		\ [ 'a', 'b', 'c' ],
+		\ [ 'x', 'y', 'z', 'warning' ]
+		\ ]
 
 filetype plugin indent on
 
-syntax on 
+syntax on
 set number ruler tabstop=2 shiftwidth=2
-autocmd FileType javascript setlocal tabstop=4 shiftwidth=4
-set et|retab
+set switchbuf=usetab noshowmode
+nmap <F8> :sbnext<CR>
+nmap <S-F8> :sbprevious<CR>
+
+autocmd FileType javascript setlocal tabstop=4 shiftwidth=4 et|retab
+autocmd FileType php setlocal tabstop=4 shiftwidth=4
+autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 et|retab
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
+autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 set ai
 set si
 set rnu
@@ -58,6 +101,10 @@ nnoremap k gk
 let mapleader   = ","
 let g:mapleader = ","
 nmap gnt :NERDTree <cr>
+nmap <leader>f :NERDTreeFind <cr>
+"ctags
+nmap <leader>c :CtrlPTag <cr>
+nmap <leader>. :TagbarToggle <cr>
 "save, quit
 imap kj <esc>l
 nmap <leader>w :w! <cr>
@@ -75,26 +122,34 @@ nmap wj :winc j <cr>
 nmap wk :winc k <cr>
 nmap wl :winc l <cr>
 nmap wh :winc h <cr>
+"resizing windows
+nmap vk :res +5 <cr>
+nmap vj :res -5 <cr>
+nmap vh :vert res -5 <cr>
+nmap vl :vert res +5 <cr>
 "shell"
-nmap <leader>sh :VimShell <cr>
+"nmap <leader>sh :VimShell <cr>
 "buffer
+nmap <leader>s :e# <cr>
 nmap <leader>ls :ls <cr>
 imap <c-d> <esc>ciw
+"Vdebug
+"let g:vdebug_options = { "server": '192.168.115.128' }
+let g:vdebug_options = { "server": '192.168.115.1' }
 "Unite
 nmap <leader>b :Unite buffer<cr>
 
-autocmd FileType ruby imap <leader>aa attr_accessor
-autocmd FileType ruby imap <leader>ar attr_reader
 "Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nmap <leader>t :UniteWithProjectDir -start-insert file<cr>
+nmap <leader>tt :UniteWithProjectDir -start-insert file<cr>
+nmap <leader>tf :Unite file_rec<cr>
 nmap <leader>b :Unite buffer<cr>
 "Tabularize
 nmap <leader>a= :Tabularize /=<cr>
 vmap <leader>a= :Tabularize /=<cr>
 nmap <leader>a: :Tabularize /:\zs<cr>
 vmap <leader>a: :Tabularize /:\zs<cr>
-let g:airline#extensions#tabline#enabled = 1
+
 
 let g:xmpfilter_cmd = "seeing_is_believing"
 
@@ -132,7 +187,7 @@ let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 "JsHint
 let JSHintUpdateWriteOnly=1
 
-au BufRead *.ejs set filetype=eruby syntax=html 
+au BufRead *.ejs set filetype=eruby syntax=html
 
 " Color scheme
 "hi LineNr ctermfg=237 ctermbg=233
@@ -146,7 +201,9 @@ let ruby_operators = 1
 "highlight Folded  guibg = #0A0A0A guifg = #9090D0
 "let g:colors_name = "nguyen_ctb"
 
-let g:airline_theme = 'tomorrow'
 
 hi SpellBad ctermbg = 52
 hi SpellCap ctermbg = 52
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
