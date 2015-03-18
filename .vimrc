@@ -16,6 +16,7 @@ Bundle 'bling/vim-bufferline'
 Bundle 'ervandew/supertab'
 Bundle 'garbas/vim-snipmate'
 Bundle 'godlygeek/tabular'
+Bundle 'hdima/python-syntax'
 Bundle 'honza/vim-snippets'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'joonty/vdebug'
@@ -39,9 +40,140 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tlib_vim'
 Bundle 'wookiehangover/jshint.vim'
+Bundle 'Valloric/vim-operator-highlight'
 Bundle 'vim-ruby/vim-ruby'
 
 call vundle#end()
+filetype plugin indent on
+
+syntax on
+set number ruler tabstop=2 shiftwidth=2
+set switchbuf=usetab noshowmode
+nmap <F8> :sbnext<CR>
+nmap <S-F8> :sbprevious<CR>
+
+autocmd FileType javascript setlocal tabstop=4 shiftwidth=4 et|retab
+autocmd FileType scss setlocal tabstop=4 shiftwidth=4 et|retab
+autocmd FileType css setlocal tabstop=4 shiftwidth=4 et|retab
+autocmd FileType php setlocal tabstop=4 shiftwidth=4
+autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 et|retab
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 et|retab
+autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+set ai
+set si
+set rnu
+set list listchars=tab:……,trail:·
+set noswapfile
+set cc=80
+set ignorecase smartcase incsearch
+"»»
+nnoremap j gj
+nnoremap k gk
+let mapleader   = ","
+let g:mapleader = ","
+let python_highlight_all = 1
+let g:ophigh_color = 220
+let g:ophigh_filetypes_to_ignore = {'php' : 1}
+nmap gnt :NERDTree <cr>
+nmap <leader>f :NERDTreeFind <cr>
+"ctags
+nmap <leader>c :CtrlPTag <cr>
+nmap <leader>. :TagbarToggle <cr>
+"save, quit
+imap kj <esc>l
+nmap <leader>w :w! <cr>
+nmap <leader>q :q! <cr>
+"whitespace
+nmap <enter> i<enter><esc>l
+nmap <space> i<space><esc>l
+nmap <tab> >>
+imap <c-l> <esc>la
+imap <c-e> <esc>A
+"comment
+nmap <leader>/ 0i#<esc>
+"navigating through splits
+nmap wj :winc j <cr>
+nmap wk :winc k <cr>
+nmap wl :winc l <cr>
+nmap wh :winc h <cr>
+"resizing windows
+nmap <leader>vk :res +5 <cr>
+nmap <leader>vj :res -5 <cr>
+nmap <leader>vh :vert res -5 <cr>
+nmap <leader>vl :vert res +5 <cr>
+nmap <leader><leader>vk :res +10 <cr>
+nmap <leader><leader>vj :res -10 <cr>
+nmap <leader><leader>vh :vert res -10 <cr>
+nmap <leader><leader>vl :vert res +10 <cr>
+"shell"
+"nmap <leader>sh :VimShell <cr>
+"buffer
+nmap <leader>s :e# <cr>
+nmap <leader>ls :ls <cr>
+imap <c-d> <esc>ciw
+"Vdebug
+"let g:vdebug_options = { "server": '192.168.115.128' }
+let g:vdebug_options = { "server": '192.168.115.1' }
+"Unite
+nmap <leader>b :Unite buffer<cr>
+
+"Unite
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nmap <leader>tt :UniteWithProjectDir -start-insert file<cr>
+nmap <leader>tf :Unite file_rec<cr>
+nmap <leader>b :Unite buffer<cr>
+"Tabularize
+nmap <leader>a= :Tabularize /=<cr>
+vmap <leader>a= :Tabularize /=<cr>
+nmap <leader>a: :Tabularize /:\zs<cr>
+vmap <leader>a: :Tabularize /:\zs<cr>
+
+"Commands
+command BC bn | sp | bp | bd!
+
+
+let g:xmpfilter_cmd = "seeing_is_believing"
+
+autocmd FileType ruby nmap <buffer> ,m <Plug>(seeing_is_believing-mark)
+autocmd FileType ruby xmap <buffer> ,m <Plug>(seeing_is_believing-mark)
+autocmd FileType ruby imap <buffer> ,m <Plug>(seeing_is_believing-mark)
+autocmd FileType ruby nmap <buffer> ,c <Plug>(seeing_is_believing-clean)
+autocmd FileType ruby xmap <buffer> ,c <Plug>(seeing_is_believing-clean)
+autocmd FileType ruby imap <buffer> ,c <Plug>(seeing_is_believing-clean)
+
+" xmpfilter compatible"
+autocmd FileType ruby nmap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
+autocmd FileType ruby xmap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
+autocmd FileType ruby imap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
+
+" auto insert mark at appropriate spot."
+autocmd FileType ruby nmap <buffer> ,e <Plug>(seeing_is_believing-run)
+autocmd FileType ruby xmap <buffer> ,e <Plug>(seeing_is_believing-run)
+autocmd FileType ruby imap <buffer> ,e <Plug>(seeing_is_believing-run)
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.tpl set filetype=html
+
+" RSpec.vim mappings
+let g:rspec_runner = "os_x_iterm"
+"map <Leader>t :call RunCurrentSpecFile()<CR>
+"map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
+
+"snipMate
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
+"JsHint
+let JSHintUpdateWriteOnly=1
+
+au BufRead *.ejs set filetype=eruby syntax=html
+
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_regexp = 1
 "let g:airline#extensions#ctrlp#color_template = 'normal'
@@ -73,121 +205,6 @@ let g:airline#extensions#default#layout = [
 		\ [ 'a', 'b', 'c' ],
 		\ [ 'x', 'y', 'z', 'warning' ]
 		\ ]
-
-filetype plugin indent on
-
-syntax on
-set number ruler tabstop=2 shiftwidth=2
-set switchbuf=usetab noshowmode
-nmap <F8> :sbnext<CR>
-nmap <S-F8> :sbprevious<CR>
-
-autocmd FileType javascript setlocal tabstop=4 shiftwidth=4 et|retab
-autocmd FileType php setlocal tabstop=4 shiftwidth=4
-autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-set ai
-set si
-set rnu
-set list listchars=tab:……,trail:·
-set noswapfile
-set cc=80
-"»»
-nnoremap j gj
-nnoremap k gk
-let mapleader   = ","
-let g:mapleader = ","
-nmap gnt :NERDTree <cr>
-nmap <leader>f :NERDTreeFind <cr>
-"ctags
-nmap <leader>c :CtrlPTag <cr>
-nmap <leader>. :TagbarToggle <cr>
-"save, quit
-imap kj <esc>l
-nmap <leader>w :w! <cr>
-nmap <leader>q :q! <cr>
-"whitespace
-nmap <enter> i<enter><esc>l
-nmap <space> i<space><esc>l
-nmap <tab> >>
-imap <c-l> <esc>la
-imap <c-e> <esc>A
-"comment
-nmap <leader>/ 0i#<esc>
-"navigating through splits
-nmap wj :winc j <cr>
-nmap wk :winc k <cr>
-nmap wl :winc l <cr>
-nmap wh :winc h <cr>
-"resizing windows
-nmap vk :res +5 <cr>
-nmap vj :res -5 <cr>
-nmap vh :vert res -5 <cr>
-nmap vl :vert res +5 <cr>
-"shell"
-"nmap <leader>sh :VimShell <cr>
-"buffer
-nmap <leader>s :e# <cr>
-nmap <leader>ls :ls <cr>
-imap <c-d> <esc>ciw
-"Vdebug
-"let g:vdebug_options = { "server": '192.168.115.128' }
-let g:vdebug_options = { "server": '192.168.115.1' }
-"Unite
-nmap <leader>b :Unite buffer<cr>
-
-"Unite
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nmap <leader>tt :UniteWithProjectDir -start-insert file<cr>
-nmap <leader>tf :Unite file_rec<cr>
-nmap <leader>b :Unite buffer<cr>
-"Tabularize
-nmap <leader>a= :Tabularize /=<cr>
-vmap <leader>a= :Tabularize /=<cr>
-nmap <leader>a: :Tabularize /:\zs<cr>
-vmap <leader>a: :Tabularize /:\zs<cr>
-
-
-let g:xmpfilter_cmd = "seeing_is_believing"
-
-autocmd FileType ruby nmap <buffer> ,m <Plug>(seeing_is_believing-mark)
-autocmd FileType ruby xmap <buffer> ,m <Plug>(seeing_is_believing-mark)
-autocmd FileType ruby imap <buffer> ,m <Plug>(seeing_is_believing-mark)
-autocmd FileType ruby nmap <buffer> ,c <Plug>(seeing_is_believing-clean)
-autocmd FileType ruby xmap <buffer> ,c <Plug>(seeing_is_believing-clean)
-autocmd FileType ruby imap <buffer> ,c <Plug>(seeing_is_believing-clean)
-
-" xmpfilter compatible"
-autocmd FileType ruby nmap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
-autocmd FileType ruby xmap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
-autocmd FileType ruby imap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
-
-" auto insert mark at appropriate spot."
-autocmd FileType ruby nmap <buffer> ,e <Plug>(seeing_is_believing-run)
-autocmd FileType ruby xmap <buffer> ,e <Plug>(seeing_is_believing-run)
-autocmd FileType ruby imap <buffer> ,e <Plug>(seeing_is_believing-run)
-
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" RSpec.vim mappings
-let g:rspec_runner = "os_x_iterm"
-"map <Leader>t :call RunCurrentSpecFile()<CR>
-"map <Leader>s :call RunNearestSpec()<CR>
-"map <Leader>l :call RunLastSpec()<CR>
-"map <Leader>a :call RunAllSpecs()<CR>
-
-"snipMate
-let g:snipMate = {}
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
-
-"JsHint
-let JSHintUpdateWriteOnly=1
-
-au BufRead *.ejs set filetype=eruby syntax=html
 
 " Color scheme
 "hi LineNr ctermfg=237 ctermbg=233

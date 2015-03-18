@@ -26,6 +26,7 @@ let s:purple = "6a3f7f"
 let s:salmon = "c26b6b"
 let s:palegreen = "76af58"
 let s:darkpurple = "392cd0"
+let s:lightpurple = "bb7bd7"
 let s:window = "000000"
 let s:integer = "5976c4"
 
@@ -267,10 +268,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
   " Vim Highlighting
   call <SID>X("Normal", s:foreground, s:background, "")
-  call <SID>X("LineNr", s:selection, "", "")
-  call <SID>X("NonText", s:selection, "", "")
+  call <SID>X("LineNr", s:lightgray, "", "")
+  call <SID>X("NonText", s:red, "", "")
   call <SID>X("SpecialKey", s:selection, "", "")
-  call <SID>X("Search", s:background, s:blue, "")
+  call <SID>X("Search", s:red, s:blue, "")
   call <SID>X("TabLine", s:foreground, s:background, "reverse")
   call <SID>X("StatusLine", s:window, s:yellow, "reverse")
   call <SID>X("StatusLineNC", s:window, s:foreground, "reverse")
@@ -281,7 +282,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("MoreMsg", s:green, "", "")
   call <SID>X("Question", s:green, "", "")
   call <SID>X("WarningMsg", s:red, "", "")
-  call <SID>X("MatchParen", "", s:selection, "")
+  call <SID>X("MatchParen", "", s:darkpurple, "")
   call <SID>X("Folded", s:comment, s:background, "")
   call <SID>X("FoldColumn", "", s:background, "")
   if version >= 700
@@ -301,14 +302,14 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("Boolean", s:integer, "", "underline")
   call <SID>X("Title", s:yellow, "", "")
   call <SID>X("Identifier", s:red, "", "none")
-  call <SID>X("Statement", s:foreground, "", "")
+  call <SID>X("Statement", s:lightpurple, "", "")
   call <SID>X("Conditional", s:orange, "", "")
-  call <SID>X("Repeat", s:foreground, "", "")
+  call <SID>X("Repeat", s:green, "", "")
   call <SID>X("Structure", s:orange, "", "")
   call <SID>X("Function", s:blue, "", "")
   call <SID>X("Constant", s:orange, "", "")
   call <SID>X("String", s:darkgreen, "", "")
-  call <SID>X("Special", s:foreground, "", "")
+  call <SID>X("Special", s:lightpurple, "", "")
   call <SID>X("PreProc", s:yellow, "", "")
   call <SID>X("Operator", "bb7bd7", "", "none")
   call <SID>X("Type", s:blue, "", "none")
@@ -344,6 +345,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("rubyBlockParameter", s:salmon, "", "")
   call <SID>X("rubyBoolean", s:integer, "", "underline")
   call <SID>X("rubyClass", s:lightgray, "", "")
+  call <SID>X("rubyComment", s:paleblue, "", "")
 	call <SID>X("rubyConditional", s:orange, "", "")
 	call <SID>X("rubyConstant", s:yellow, "", "")
   call <SID>X("rubyControl", s:green, "", "")
@@ -352,28 +354,30 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("rubyException", s:red, "", "")
   call <SID>X("rubyFunction", s:paleyellow, "", "bold")
   call <SID>X("rubyIdentifier", s:salmon, "", "")
-  call <SID>X("rubyInclude", s:lightgray, "", "")
+  call <SID>X("rubyInclude", s:green, "", "")
   "call <SID>X("rubyInstanceVariable", s:salmon, "", "")
   call <SID>X("rubyInteger", s:integer, "", "")
   call <SID>X("rubyInterpolation", s:salmon, "", "")
   call <SID>X("rubyInterpolationDelimiter", s:salmon, "", "")
   call <SID>X("rubyKeyword", s:green, "", "")
   call <SID>X("rubyLocalVariableOrMethod", s:orange, "", "")
-  call <SID>X("rubyPredefineVariable", s:purple, "", "")
+  "call <SID>X("rubyPredefinedVariable", s:purple, "", "")
   call <SID>X("rubyPseudoVariable", s:salmon, "", "")
   call <SID>X("rubyRepeat", s:green, "", "")
-  call <SID>X("rubyString", s:integer, "", "")
-  call <SID>X("rubyStringDelimiter", s:integer, "", "")
+  call <SID>X("rubyString", s:darkgreen, "", "")
+  call <SID>X("rubyStringDelimiter", s:darkgreen, "", "")
   call <SID>X("rubySymbol", s:salmon, "", "")
 "  call <SID>X("rubyDoBlock", s:red, "", "")
 
   " Python Highlighting
-  call <SID>X("pythonInclude", s:green, "", "")
-  call <SID>X("pythonStatement", s:green, "", "")
-  call <SID>X("pythonConditional", s:yellow, "", "")
+  call <SID>X("pythonBuiltin", s:integer, "", "underline")
+  call <SID>X("pythonConditional", s:orange, "", "")
+  call <SID>X("pythonDecorator", s:salmon, "", "")
+  call <SID>X("pythonException", s:lightred, "", "")
+  call <SID>X("pythonFunction", s:yellow, "", "")
+  call <SID>X("pythonImport", s:blue, "", "")
   call <SID>X("pythonRepeat", s:green, "", "")
-  call <SID>X("pythonException", s:green, "", "")
-  call <SID>X("pythonFunction", s:blue, "", "")
+  call <SID>X("pythonStatement", s:green, "", "")
 
   " Go Highlighting
   call <SID>X("goStatement", s:green, "", "")
@@ -392,13 +396,14 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("Number", s:blue, "", "")
   "call <SID>X("jsBraces", s:lightgray, "", "")
   "call <SID>X("jsParens", s:lightgray, "", "")
+  call <SID>X("jsComment", s:paleblue, "", "")
   call <SID>X("jsBraces", s:orange, "", "")
   call <SID>X("jsException", s:red, "", "")
-  call <SID>X("jsFunction", s:darkgreen, "", "")
-  call <SID>X("jsFuncName", s:yellow, "", "bold")
+  call <SID>X("jsFunction", s:yellow, "", "")
+  call <SID>X("jsFuncBraces", s:yellow, "", "")
+  call <SID>X("jsFuncParens", s:yellow, "", "")
+  call <SID>X("jsFuncName", s:paleyellow, "", "bold")
   call <SID>X("jsFuncArgs", s:salmon, "", "")
-  call <SID>X("jsFuncBraces", s:darkgreen, "", "")
-  call <SID>X("jsFuncParens", s:darkgreen, "", "")
   call <SID>X("jsGlobalObjects", s:palegreen, "", "")
   call <SID>X("jsKeyword", s:green, "", "")
   call <SID>X("jsObjectKey", s:salmon, "", "")
@@ -430,6 +435,19 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("cssFontAttr", s:yellow, "","")
   call <SID>X("cssPseudoClassId", s:yellow, "","")
   call <SID>X("cssTagName", s:yellow, "","")
+
+	" Markdown Highlighting
+  call <SID>X("markdownH1", s:lightred, "","")
+  call <SID>X("markdownH2", s:orange, "","")
+  call <SID>X("markdownH3", s:yellow, "","")
+  call <SID>X("markdownH4", s:darkgreen, "","")
+  call <SID>X("markdownHeadingRule", s:paleyellow, "","")
+  call <SID>X("markdownHeadingDelimiter", s:paleyellow, "","")
+  call <SID>X("markdownOrderedListMarker", s:paleblue, "","")
+  call <SID>X("markdownListMarker", s:paleblue, "","")
+  call <SID>X("markdownRule", s:red, "","")
+  call <SID>X("markdownItalic", s:darkgreen, "","")
+  call <SID>X("markdownBold", s:green, "","")
 
   " Diff Highlighting
   let s:diffbackground = "494e56"
