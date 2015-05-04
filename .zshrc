@@ -23,6 +23,10 @@ eval "$(rbenv init -)"
 export CLICOLOR=1
 set LSCOLORS=ExFxBxDxCxegedabagacad
 
+echo -ne "\033]0;${PWD/#$HOME/~}\007"
+
+alias dev='grunt dev'
+alias lyn='learnyounode'
 alias ls='ls -GFh'
 alias bashp='v .bash_profile'
 alias cdruby='cd ~/Documents/ruby'
@@ -30,6 +34,7 @@ alias food='open ~/Documents/home/eats_english.pdf'
 alias ga='git add'
 alias gc='git commit -m'
 alias gd='git diff'
+alias gg='git grep'
 alias gr='git rebase -i'
 alias gs='git status'
 alias j='jobs'
