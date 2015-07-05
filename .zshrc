@@ -42,23 +42,18 @@ alias j1='%1'
 alias j2='%2'
 alias j3='%3'
 alias j4='%4'
-alias jsctags='/usr/local/lib/node_modules/javascript-ctags/bin/javascript-ctags'
 alias mysql='/usr/local/mysql/bin/mysql'
 alias mysqlstart='mysql.server start'
 alias mysqlstop='mysql.server stop'
 alias rails4.0='rails _4.0.8_'
-alias sshjenkins1='ssh -A root@10.80.0.79'
-alias sshjenkins2='ssh -A root@10.80.0.137'
-alias sshvm='ssh root@192.168.115.128'
-alias v='/Applications/mvim -v'
-alias gv='/Applications/mvim'
+alias v='/usr/bin/vim'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
 
 source ~/.git-prompt.sh
-source ~/.git-completion.sh
+#source ~/.git-completion.sh
 #export PS1="%{$fg[cyan]%}[%n@%m %c$(__git_ps1 ' (%s)')]\$ "
 #setopt PROMPT_SUBST ; PS1="%{$fg[cyan]%}%n%{$fg[green]%}@%m:%{$fg[magenta]%}%d""%{$fg[yellow]%}""$(__git_ps1 " (%s)")"$'\n'"%{$fg[red]%}$%{$reset_color%}"
-precmd () { __git_ps1 %{$fg[cyan]%}"%n"%{$fg[green]%}"@%m:"%{$fg[yellow]%} %{$fg[magenta]%}" %~""%{$fg[red]%}"$'\n'"$"%{$reset_color%}" %s"}
+precmd () { if [[ $VIRTUAL_ENV ]]; then printf "$fg[red](venv) "; fi; __git_ps1 %{$fg[cyan]%}"%n"%{$fg[green]%}"@%m:"%{$fg[yellow]%} %{$fg[magenta]%}" %~""%{$fg[red]%}"$'\n'"$"%{$reset_color%}" %s"}
