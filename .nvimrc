@@ -87,6 +87,10 @@ nmap <leader>f :NERDTreeFind <cr>
 nmap <leader>c :CtrlPTag <cr>
 nmap <leader>. :TagbarToggle <cr>
 "save, quit
+tmap kj <C-\><C-n>
+nmap <C-k><C-j> :nohls <cr>
+nmap <leader>z :vsp<cr>wl:e term://zsh <cr>i
+imap kj <esc>l
 nmap <leader>w :w! <cr>
 nmap <leader>q :q! <cr>
 "whitespace
@@ -102,7 +106,6 @@ nmap wj :winc j <cr>
 nmap wk :winc k <cr>
 nmap wl :winc l <cr>
 nmap wh :winc h <cr>
-imap kj <esc>l
 "resizing windows
 nmap <leader>vk :res +5 <cr>
 nmap <leader>vj :res -5 <cr>
