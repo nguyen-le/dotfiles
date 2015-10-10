@@ -13,6 +13,7 @@ call vundle#begin()
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
+Bundle 'editorconfig/editorconfig-vim'
 Bundle 'ervandew/supertab'
 Bundle 'garbas/vim-snipmate'
 Bundle 'godlygeek/tabular'
@@ -61,6 +62,7 @@ autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 et|retab
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
 autocmd FileType html setlocal tabstop=4 shiftwidth=4
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 et|retab
+autocmd FileType cucumber setlocal tabstop=2 shiftwidth=2 et|retab
 autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -82,7 +84,9 @@ let python_highlight_all = 1
 let g:ophigh_color = 220
 let g:ophigh_filetypes_to_ignore = {'php' : 1}
 nmap gnt :NERDTree <cr>
-nmap <leader>f :NERDTreeFind <cr>
+nmap gnf :NERDTreeFind <cr>
+"nmap <leader>f :NERDTreeFind <cr>
+nmap <leader>f za
 "ctags
 nmap <leader>c :CtrlPTag <cr>
 nmap <leader>. :TagbarToggle <cr>
@@ -211,6 +215,7 @@ let g:airline#extensions#default#layout = [
 		\ [ 'a', 'b', 'c' ],
 		\ [ 'x', 'y', 'z', 'warning' ]
 		\ ]
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " Color scheme
 "hi LineNr ctermfg=237 ctermbg=233
