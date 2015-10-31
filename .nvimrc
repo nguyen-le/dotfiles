@@ -7,7 +7,7 @@ set runtimepath^=~/.vim/bundle/fugitive.vim
 set runtimepath^=~/.vim/bundle/Vundle.vim
 set laststatus=2
 call vundle#begin()
-"Bundle 'thoughtbot/vim-rspec'
+Bundle 'thoughtbot/vim-rspec'
 
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
@@ -25,7 +25,9 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'majutsushi/tagbar'
 Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'mxw/vim-jsx'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'ntpeters/vim-better-whitespace'
 Bundle 'pangloss/vim-javascript'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdcommenter'
@@ -50,6 +52,9 @@ call vundle#end()
 filetype plugin indent on
 
 syntax on
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+set so=5
 set number ruler tabstop=2 shiftwidth=2
 set so=5
 set switchbuf=usetab noshowmode
@@ -65,11 +70,12 @@ autocmd FileType css setlocal tabstop=4 shiftwidth=4 et|retab
 autocmd FileType php setlocal tabstop=4 shiftwidth=4
 autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 et|retab
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType html setlocal tabstop=4 shiftwidth=4
+autocmd FileType html,scss,eruby setlocal tabstop=2 shiftwidth=2 et|retab
+autocmd FileType eruby setlocal tabstop=2 shiftwidth=2 et|retab
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 et|retab
 autocmd FileType cucumber setlocal tabstop=2 shiftwidth=2 et|retab
-"autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
-command NODE :!node % <cr>
+command NODE :! node % <cr>
+command RUBY :! ruby % <cr>
 
 " Cursor level
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -135,7 +141,6 @@ nmap <leader><leader>vl :vert res +10 <cr>
 "shell"
 "nmap <leader>sh :VimShell <cr>
 "buffer
-nmap <leader>s :e# <cr>
 imap <c-d> <esc>ciw
 "Vdebug
 "let g:vdebug_options = { "server": '192.168.115.128' }
@@ -161,16 +166,10 @@ command BC bn | sp | bp | bd!
 let g:xmpfilter_cmd = "seeing_is_believing"
 
 autocmd FileType ruby nmap <buffer> ,m <Plug>(seeing_is_believing-mark)
-autocmd FileType ruby xmap <buffer> ,m <Plug>(seeing_is_believing-mark)
-autocmd FileType ruby imap <buffer> ,m <Plug>(seeing_is_believing-mark)
 autocmd FileType ruby nmap <buffer> ,c <Plug>(seeing_is_believing-clean)
-autocmd FileType ruby xmap <buffer> ,c <Plug>(seeing_is_believing-clean)
-autocmd FileType ruby imap <buffer> ,c <Plug>(seeing_is_believing-clean)
 
 " xmpfilter compatible"
 autocmd FileType ruby nmap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
-autocmd FileType ruby xmap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
-autocmd FileType ruby imap <buffer> ,r <Plug>(seeing_is_believing-run_-x)
 
 " auto insert mark at appropriate spot."
 autocmd FileType ruby nmap <buffer> ,e <Plug>(seeing_is_believing-run)
@@ -182,15 +181,20 @@ autocmd BufNewFile,BufReadPost *.tpl set filetype=html
 
 " RSpec.vim mappings
 let g:rspec_runner = "os_x_iterm"
-"map <Leader>t :call RunCurrentSpecFile()<CR>
-"map <Leader>s :call RunNearestSpec()<CR>
-"map <Leader>l :call RunLastSpec()<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>tt :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
 "map <Leader>a :call RunAllSpecs()<CR>
 
 "snipMate
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
+"JsHint
+let b:jshint_disabled = 1
+let g:JSHintUpdateWriteOnly = 1
+let g:JSHintHighlightErrorLine = 0
 
 au BufRead *.ejs set filetype=eruby syntax=html
 
@@ -234,10 +238,19 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 colorscheme ctb
 let ruby_operators = 1
 
+" indent guides
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=grey
+"17 navy
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=green ctermbg=234 ctermfg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235 ctermfg=236
+
 "let ruby_space_errors = 1
 "highlight NonText guibg = #060606
 "highlight Folded  guibg = #0A0A0A guifg = #9090D0
-"let g:colors_name = "nguyen_ctb"
+"let g:colors_name = "ctb"
 
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
