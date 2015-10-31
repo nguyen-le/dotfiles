@@ -25,6 +25,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'majutsushi/tagbar'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'pangloss/vim-javascript'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdcommenter'
@@ -49,6 +51,7 @@ call vundle#end()
 filetype plugin indent on
 
 syntax on
+set so=5
 set number ruler tabstop=2 shiftwidth=2
 set switchbuf=usetab noshowmode
 nmap <F8> :sbnext<CR>
@@ -85,7 +88,6 @@ let g:ophigh_color = 220
 let g:ophigh_filetypes_to_ignore = {'php' : 1}
 nmap gnt :NERDTree <cr>
 nmap gnf :NERDTreeFind <cr>
-"nmap <leader>f :NERDTreeFind <cr>
 nmap <leader>f za
 "ctags
 nmap <leader>c :CtrlPTag <cr>
@@ -110,6 +112,7 @@ nmap wj :winc j <cr>
 nmap wk :winc k <cr>
 nmap wl :winc l <cr>
 nmap wh :winc h <cr>
+imap kj <esc>l
 "resizing windows
 nmap <leader>vk :res +5 <cr>
 nmap <leader>vj :res -5 <cr>
@@ -223,6 +226,14 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 "hi cursorline cterm = NONE ctermbg = 235 ctermfg = white
 colorscheme ctb
 let ruby_operators = 1
+
+" indent guides
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=grey
+"17 navy
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235
 
 "let ruby_space_errors = 1
 "highlight NonText guibg = #060606
