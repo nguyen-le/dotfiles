@@ -57,7 +57,7 @@ alias sshjenkins1='ssh -A root@10.80.0.79'
 alias sshjenkins2='ssh -A root@10.80.0.137'
 alias sshvm='ssh root@192.168.115.128'
 alias nv='nvim'
-alias nvv="nvim -O $(git show --name-only --format='')"
+alias nvv='nvim -O $(git show --name-only --format="")'
 alias gv='/Applications/mvim'
 alias v='/Applications/mvim -v'
 
