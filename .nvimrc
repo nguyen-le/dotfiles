@@ -50,13 +50,24 @@ Bundle 'vim-ruby/vim-ruby'
 call vundle#end()
 filetype plugin indent on
 
-syntax on
-set so=5
-set number ruler tabstop=2 shiftwidth=2
-set switchbuf=usetab noshowmode
 nmap <F8> :sbnext<CR>
 nmap <S-F8> :sbprevious<CR>
+" File level changes
+syntax on
+set ai
+set cc=80
+set foldlevel=1
+set foldmethod=indent
+set ignorecase smartcase incsearch
+set list listchars=tab:……,trail:·
+set noswapfile
+set rnu
+set si
+set so=5
+set switchbuf=usetab noshowmode
 
+" Indent
+set number ruler tabstop=2 shiftwidth=2
 autocmd FileType javascript setlocal tabstop=4 shiftwidth=4
 autocmd FileType scss setlocal tabstop=4 shiftwidth=4
 autocmd FileType css setlocal tabstop=4 shiftwidth=4 et|retab
@@ -67,20 +78,17 @@ autocmd FileType html setlocal tabstop=4 shiftwidth=4
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 et|retab
 autocmd FileType cucumber setlocal tabstop=2 shiftwidth=2 et|retab
 autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
+
+" Cursor level
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-set ai
-set si
-set rnu
-set foldmethod=indent
-set foldlevel=1
-set list listchars=tab:……,trail:·
-set noswapfile
-set cc=80
-set ignorecase smartcase incsearch
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 "»»
+
+" Search level
 nnoremap j gj
 nnoremap k gk
+" Shortcuts
 let mapleader   = ","
 let g:mapleader = ","
 let python_highlight_all = 1
@@ -113,6 +121,7 @@ nmap wk :winc k <cr>
 nmap wl :winc l <cr>
 nmap wh :winc h <cr>
 imap kj <esc>l
+nmap <leader>s :e# <cr>
 "resizing windows
 nmap <leader>vk :res +5 <cr>
 nmap <leader>vj :res -5 <cr>
@@ -125,7 +134,6 @@ nmap <leader><leader>vl :vert res +10 <cr>
 "shell"
 "nmap <leader>sh :VimShell <cr>
 "buffer
-nmap <leader>s :e# <cr>
 imap <c-d> <esc>ciw
 "Vdebug
 "let g:vdebug_options = { "server": '192.168.115.128' }
@@ -227,18 +235,15 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 colorscheme ctb
 let ruby_operators = 1
 
-" indent guides
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup = 1
-
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=grey
-"17 navy
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235
-
 "let ruby_space_errors = 1
 "highlight NonText guibg = #060606
 "highlight Folded  guibg = #0A0A0A guifg = #9090D0
 "let g:colors_name = "nguyen_ctb"
+
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=green ctermbg=234 ctermfg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235 ctermfg=236
 
 
 hi SpellBad ctermbg = 52
