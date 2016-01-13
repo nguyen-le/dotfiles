@@ -43,7 +43,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tlib_vim'
-Bundle 'wookiehangover/jshint.vim'
+"Bundle 'wookiehangover/jshint.vim'
 Bundle 'Valloric/vim-operator-highlight'
 Bundle 'vim-ruby/vim-ruby'
 
@@ -68,7 +68,7 @@ set switchbuf=usetab noshowmode
 
 " Indent
 set number ruler tabstop=2 shiftwidth=2
-autocmd FileType javascript setlocal tabstop=4 shiftwidth=4
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 et|retab
 autocmd FileType scss setlocal tabstop=4 shiftwidth=4
 autocmd FileType css setlocal tabstop=4 shiftwidth=4 et|retab
 autocmd FileType php setlocal tabstop=4 shiftwidth=4
@@ -77,7 +77,8 @@ autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
 autocmd FileType html setlocal tabstop=4 shiftwidth=4
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 et|retab
 autocmd FileType cucumber setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
+"autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
+command NODE :!node % <cr>
 
 " Cursor level
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -108,6 +109,8 @@ imap kj <esc>l
 nmap <leader>w :w! <cr>
 nmap <leader>q :q! <cr>
 "whitespace
+"let g:JSHintUpdateWriteOnly = 1
+let JSHintUpdateWriteOnly = 1
 nmap <enter> i<enter><esc>l
 nmap <space> i<space><esc>l
 nmap <tab> >>
@@ -190,9 +193,6 @@ let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
-"JsHint
-let JSHintUpdateWriteOnly=1
-
 au BufRead *.ejs set filetype=eruby syntax=html
 
 let g:ctrlp_working_path_mode = 'a'
@@ -245,6 +245,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=green ctermbg=234 ctermfg=236
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235 ctermfg=236
 
+
+"JsHint
+let g:JSHintUpdateWriteOnly=1
+let g:JSHintHighlightErrorLine=1
 
 hi SpellBad ctermbg = 52
 hi SpellCap ctermbg = 52

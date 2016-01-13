@@ -64,6 +64,7 @@ alias v='/Applications/mvim -v'
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
+export TERM='xterm-256color'
 
 source ~/.git-prompt.sh
 source ~/.git-completion.sh
