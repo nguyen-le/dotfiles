@@ -1,11 +1,13 @@
 # The following lines were added by compinstall
-
-zstyle ':completion:*' completer _complete _ignored _approximate
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
-zstyle :compinstall filename '/Users/nguyen/.zshrc'
-
 autoload -U compinit
 compinit
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+#zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+#zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=**' 'l:|=* r:|=*'
+zstyle :compinstall filename '/Users/nguyen/.zshrc'
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -14,15 +16,16 @@ SAVEHIST=800
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # Load zsh-syntax-highlighting.
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Load zsh-autosuggestions.
-source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
+#source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
 # Enable autosuggestions automatically.
-zle-line-init() {
-    zle autosuggest-start
-}
-zle -N zle-line-init
-bindkey '^f' vi-forward-word
+#zle-line-init() {
+    #zle autosuggest-start
+#}
+#zle -N zle-line-init
+#bindkey '^T' autosuggest-toggle
+#bindkey '^f' vi-forward-word
 export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=7'
 
 autoload -U colors && colors
@@ -70,14 +73,13 @@ alias sshjenkins1='ssh -A root@10.80.0.79'
 alias sshjenkins2='ssh -A root@10.80.0.137'
 alias sshvm='ssh root@192.168.115.128'
 alias nv='nvim'
-alias nvv='nvim -O $(git show --name-only --format="")'
+alias nvv="nvim -O $(git show --name-only --format='')"
 alias gv='/Applications/mvim'
 alias v='/Applications/mvim -v'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
-export TERM='xterm-256color'
 
 source ~/.git-prompt.sh
 #source ~/.git-completion.sh
