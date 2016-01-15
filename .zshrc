@@ -26,7 +26,7 @@ bindkey -e
 #zle -N zle-line-init
 #bindkey '^T' autosuggest-toggle
 #bindkey '^f' vi-forward-word
-export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=7'
+#export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=7'
 
 autoload -U colors && colors
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -73,17 +73,18 @@ alias sshjenkins1='ssh -A root@10.80.0.79'
 alias sshjenkins2='ssh -A root@10.80.0.137'
 alias sshvm='ssh root@192.168.115.128'
 alias nv='nvim'
-alias nvv="nvim -O $(git show --name-only --format='')"
+alias nvv='nvim -O $(git show --name-only --format="")'
 alias gv='/Applications/mvim'
 alias v='/Applications/mvim -v'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/git/bin:/usr/local/sbin:$PATH
 export TERM="xterm-256color"
 
 source ~/.git-prompt.sh
-#source ~/.git-completion.sh
+source ~/.git-completion.sh
 #export PS1="%{$fg[cyan]%}[%n@%m %c$(__git_ps1 ' (%s)')]\$ "
 #setopt PROMPT_SUBST ; PS1="%{$fg[cyan]%}%n%{$fg[green]%}@%m:%{$fg[magenta]%}%d""%{$fg[yellow]%}""$(__git_ps1 " (%s)")"$'\n'"%{$fg[red]%}$%{$reset_color%}"
 precmd () { if [ $VIRTUAL_ENV ]; then print "$fg[red](venv) "; fi; __git_ps1 %{$fg[cyan]%}"%n"%{$fg[green]%}"@%m:"%{$fg[yellow]%} %{$fg[magenta]%}" %~""%{$fg[red]%}"$'\n'"$"%{$reset_color%}" %s"}
