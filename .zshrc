@@ -13,6 +13,18 @@ HISTSIZE=800
 SAVEHIST=800
 bindkey -e
 # End of lines configured by zsh-newuser-install
+# Load zsh-syntax-highlighting.
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Load zsh-autosuggestions.
+source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
+# Enable autosuggestions automatically.
+zle-line-init() {
+    zle autosuggest-start
+}
+zle -N zle-line-init
+bindkey '^f' vi-forward-word
+export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=7'
+
 autoload -U colors && colors
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.linuxbrew/bin:$PATH"
@@ -24,8 +36,9 @@ export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
 eval "$(rbenv init -)"
 #export PS1="%{$fg[cyan]%}%n%{$fg[green]%}@%m:%{$fg[magenta]%}%d%{$reset_color%}"$'\n'"%{$fg[red]%}$%{$reset_color%}"
 export CLICOLOR=1
-set LSCOLORS=ExFxBxDxCxegedabagacad
-
+export LSCOLORS=ExFxBxDxCxegedabagacad
+#export LSCOLORS=ExFxBxExCxegedabagacad
+#export LSCOLORS=ExGxFxDxCxDxDxhbhdacEc
 echo -ne "\033]0;${PWD/#$HOME/~}\007"
 
 alias bashp='v .bash_profile'
@@ -67,7 +80,7 @@ export PATH=/usr/local/bin:$PATH
 export TERM='xterm-256color'
 
 source ~/.git-prompt.sh
-source ~/.git-completion.sh
+#source ~/.git-completion.sh
 #export PS1="%{$fg[cyan]%}[%n@%m %c$(__git_ps1 ' (%s)')]\$ "
 #setopt PROMPT_SUBST ; PS1="%{$fg[cyan]%}%n%{$fg[green]%}@%m:%{$fg[magenta]%}%d""%{$fg[yellow]%}""$(__git_ps1 " (%s)")"$'\n'"%{$fg[red]%}$%{$reset_color%}"
 precmd () { if [ $VIRTUAL_ENV ]; then print "$fg[red](venv) "; fi; __git_ps1 %{$fg[cyan]%}"%n"%{$fg[green]%}"@%m:"%{$fg[yellow]%} %{$fg[magenta]%}" %~""%{$fg[red]%}"$'\n'"$"%{$reset_color%}" %s"}
