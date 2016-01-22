@@ -28,7 +28,8 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'majutsushi/tagbar'
 Bundle 'mxw/vim-jsx'
 Bundle 'ntpeters/vim-better-whitespace'
-Bundle 'pangloss/vim-javascript'
+"Bundle 'pangloss/vim-javascript'
+Bundle 'nguyen-le/vim-javascript'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
@@ -37,40 +38,39 @@ Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
 Bundle 'shougo/vimshell'
 Bundle 'Shougo/unite.vim'
-Bundle 'Shutnik/jshint2.vim'
 Bundle 't9md/vim-ruby-xmpfilter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tlib_vim'
-"Bundle 'wookiehangover/jshint.vim'
 Bundle 'Valloric/vim-operator-highlight'
 Bundle 'vim-ruby/vim-ruby'
 
 call vundle#end()
 filetype plugin indent on
 
-let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_jsx_checkers = ['jsxhint']
 "let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_quiet_messages = { "type": "style" }
 syntax on
-set number ruler tabstop=2 shiftwidth=2
+set number ruler
+set so=5
 set switchbuf=usetab noshowmode
 nmap <F8> :sbnext<CR>
 nmap <S-F8> :sbprevious<CR>
 
-autocmd FileType javascript setlocal tabstop=4 shiftwidth=4 et|retab
-autocmd FileType scss setlocal tabstop=4 shiftwidth=4
-autocmd FileType css setlocal tabstop=4 shiftwidth=4 et|retab
-autocmd FileType php setlocal tabstop=4 shiftwidth=4
-autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType html setlocal tabstop=4 shiftwidth=4
-autocmd FileType python setlocal tabstop=4 shiftwidth=4 et|retab
-autocmd FileType cucumber setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
+"autocmd FileType javascript setlocal tabstop=4 shiftwidth=4 et|retab
+"autocmd FileType scss setlocal tabstop=4 shiftwidth=4
+"autocmd FileType css setlocal tabstop=4 shiftwidth=4 et|retab
+"autocmd FileType php setlocal tabstop=4 shiftwidth=4
+"autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 et|retab
+"autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
+"autocmd FileType html setlocal tabstop=4 shiftwidth=4
+"autocmd FileType python setlocal tabstop=4 shiftwidth=4 et|retab
+"autocmd FileType cucumber setlocal tabstop=2 shiftwidth=2 et|retab
+"autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -88,6 +88,8 @@ nnoremap j gj
 nnoremap k gk
 let mapleader   = ","
 let g:mapleader = ","
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:loaded_python_provider = 1
 let python_highlight_all = 1
 let g:ophigh_color = 220
 let g:ophigh_filetypes_to_ignore = {'php' : 1}
