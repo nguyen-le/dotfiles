@@ -2,7 +2,6 @@ set t_Co=256
 set encoding=utf-8
 set nocompatible
 filetype off
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/fugitive.vim
 "set rtp+=~/.vim/bundle/Vundle.vim
 set runtimepath^=~/.vim/bundle/Vundle.vim
@@ -43,32 +42,24 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tlib_vim'
-"Bundle 'wookiehangover/jshint.vim'
+Bundle 'wookiehangover/jshint.vim'
 Bundle 'Valloric/vim-operator-highlight'
 Bundle 'vim-ruby/vim-ruby'
 
 call vundle#end()
 filetype plugin indent on
 
-nmap <F8> :sbnext<CR>
-nmap <S-F8> :sbprevious<CR>
-" File level changes
 syntax on
-set ai
-set cc=80
-set foldlevel=1
-set foldmethod=indent
-set ignorecase smartcase incsearch
-set list listchars=tab:……,trail:·
-set noswapfile
-set rnu
-set si
+set number ruler tabstop=2 shiftwidth=2
 set so=5
 set switchbuf=usetab noshowmode
+nmap <F8> :sbnext<CR>
+nmap <S-F8> :sbprevious<CR>
 
 " Indent
 set number ruler tabstop=2 shiftwidth=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 et|retab
+autocmd FileType javascript.jsx setlocal tabstop=2 shiftwidth=2 et|retab
 autocmd FileType scss setlocal tabstop=4 shiftwidth=4
 autocmd FileType css setlocal tabstop=4 shiftwidth=4 et|retab
 autocmd FileType php setlocal tabstop=4 shiftwidth=4
@@ -84,6 +75,15 @@ command NODE :!node % <cr>
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+set ai
+set si
+set rnu
+set foldmethod=indent
+set foldlevel=1
+set list listchars=tab:……,trail:·
+set noswapfile
+set cc=80
+set ignorecase smartcase incsearch
 "»»
 
 " Search level
@@ -109,8 +109,6 @@ imap kj <esc>l
 nmap <leader>w :w! <cr>
 nmap <leader>q :q! <cr>
 "whitespace
-"let g:JSHintUpdateWriteOnly = 1
-let JSHintUpdateWriteOnly = 1
 nmap <enter> i<enter><esc>l
 nmap <space> i<space><esc>l
 nmap <tab> >>
@@ -137,6 +135,7 @@ nmap <leader><leader>vl :vert res +10 <cr>
 "shell"
 "nmap <leader>sh :VimShell <cr>
 "buffer
+nmap <leader>s :e# <cr>
 imap <c-d> <esc>ciw
 "Vdebug
 "let g:vdebug_options = { "server": '192.168.115.128' }
