@@ -2,13 +2,15 @@ set t_Co=256
 set encoding=utf-8
 set nocompatible
 filetype off
-set runtimepath^=~/.vim/bundle/fugitive.vim
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
+"set runtimepath^=~/.vim/bundle/fugitive.vim
 "set rtp+=~/.vim/bundle/Vundle.vim
 set runtimepath^=~/.vim/bundle/Vundle.vim
 set laststatus=2
 call vundle#begin()
 "Bundle 'thoughtbot/vim-rspec'
 
+Bundle 'VundleVim/Vundle.Vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
@@ -25,8 +27,10 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'majutsushi/tagbar'
 Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
+Bundle 'ntpeters/vim-better-whitespace'
+"Bundle 'pangloss/vim-javascript'
+Bundle 'nguyen-le/vim-javascript'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
@@ -35,43 +39,39 @@ Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'shougo/vimproc', { 'build' : { 'mac' : 'make -f make_mac.mak'}, }
 Bundle 'shougo/vimshell'
 Bundle 'Shougo/unite.vim'
-Bundle 'Shutnik/jshint2.vim'
 Bundle 't9md/vim-ruby-xmpfilter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tlib_vim'
-Bundle 'wookiehangover/jshint.vim'
 Bundle 'Valloric/vim-operator-highlight'
 Bundle 'vim-ruby/vim-ruby'
 
 call vundle#end()
 filetype plugin indent on
 
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_jsx_checkers = ['jsxhint']
+"let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+let g:syntastic_quiet_messages = { "type": "style" }
 syntax on
-set number ruler tabstop=2 shiftwidth=2
+set number ruler
 set so=5
 set switchbuf=usetab noshowmode
 nmap <F8> :sbnext<CR>
 nmap <S-F8> :sbprevious<CR>
 
-" Indent
-set number ruler tabstop=2 shiftwidth=2
-autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType javascript.jsx setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType scss setlocal tabstop=4 shiftwidth=4
-autocmd FileType css setlocal tabstop=4 shiftwidth=4 et|retab
-autocmd FileType php setlocal tabstop=4 shiftwidth=4
-autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
-autocmd FileType html setlocal tabstop=4 shiftwidth=4
-autocmd FileType python setlocal tabstop=4 shiftwidth=4 et|retab
-autocmd FileType cucumber setlocal tabstop=2 shiftwidth=2 et|retab
+"autocmd FileType javascript setlocal tabstop=4 shiftwidth=4 et|retab
+"autocmd FileType scss setlocal tabstop=4 shiftwidth=4
+"autocmd FileType css setlocal tabstop=4 shiftwidth=4 et|retab
+"autocmd FileType php setlocal tabstop=4 shiftwidth=4
+"autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 et|retab
+"autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 et|retab
+"autocmd FileType html setlocal tabstop=4 shiftwidth=4
+"autocmd FileType python setlocal tabstop=4 shiftwidth=4 et|retab
+"autocmd FileType cucumber setlocal tabstop=2 shiftwidth=2 et|retab
 "autocmd FileType ruby nmap <leader><leader>r :!ruby % <cr>
-command NODE :!node % <cr>
-
-" Cursor level
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -85,18 +85,18 @@ set noswapfile
 set cc=80
 set ignorecase smartcase incsearch
 "»»
-
-" Search level
 nnoremap j gj
 nnoremap k gk
-" Shortcuts
 let mapleader   = ","
 let g:mapleader = ","
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:loaded_python_provider = 1
 let python_highlight_all = 1
 let g:ophigh_color = 220
 let g:ophigh_filetypes_to_ignore = {'php' : 1}
 nmap gnt :NERDTree <cr>
 nmap gnf :NERDTreeFind <cr>
+"nmap <leader>f :NERDTreeFind <cr>
 nmap <leader>f za
 "ctags
 nmap <leader>c :CtrlPTag <cr>
@@ -121,8 +121,6 @@ nmap wj :winc j <cr>
 nmap wk :winc k <cr>
 nmap wl :winc l <cr>
 nmap wh :winc h <cr>
-imap kj <esc>l
-nmap <leader>s :e# <cr>
 "resizing windows
 nmap <leader>vk :res +5 <cr>
 nmap <leader>vj :res -5 <cr>
@@ -160,6 +158,7 @@ command BC bn | sp | bp | bd!
 
 let g:xmpfilter_cmd = "seeing_is_believing"
 
+
 autocmd FileType ruby nmap <buffer> ,m <Plug>(seeing_is_believing-mark)
 autocmd FileType ruby xmap <buffer> ,m <Plug>(seeing_is_believing-mark)
 autocmd FileType ruby imap <buffer> ,m <Plug>(seeing_is_believing-mark)
@@ -191,6 +190,9 @@ let g:rspec_runner = "os_x_iterm"
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
+"JsHint
+let JSHintUpdateWriteOnly=1
 
 au BufRead *.ejs set filetype=eruby syntax=html
 
@@ -233,21 +235,13 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 "hi cursorline cterm = NONE ctermbg = 235 ctermfg = white
 colorscheme ctb
 let ruby_operators = 1
+highlight ExtraWhitespace ctermbg=red
 
 "let ruby_space_errors = 1
 "highlight NonText guibg = #060606
 "highlight Folded  guibg = #0A0A0A guifg = #9090D0
 "let g:colors_name = "nguyen_ctb"
 
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=green ctermbg=234 ctermfg=236
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235 ctermfg=236
-
-
-"JsHint
-let g:JSHintUpdateWriteOnly=1
-let g:JSHintHighlightErrorLine=1
 
 hi SpellBad ctermbg = 52
 hi SpellCap ctermbg = 52
