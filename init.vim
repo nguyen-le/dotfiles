@@ -1,5 +1,5 @@
 set t_Co=256
-set encoding=utf-8
+"set encoding=utf-8
 set nocompatible
 filetype off
 set runtimepath^=~/.vim/bundle/Vundle.vim
@@ -44,6 +44,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tlib_vim'
 Bundle 'Valloric/vim-operator-highlight'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-airline/vim-airline-themes'
 
 call vundle#end()
 filetype plugin indent on
@@ -191,7 +192,8 @@ let g:airline_detect_paste=1
 let g:airline_detect_iminsert=0
 let g:airline_inactive_collapse=1
 let g:airline_section_c = '%f'
-let g:airline_theme = 'tomorrow'
+"let g:airline_theme = 'tomorrow'
+let g:airline_theme = 'simple'
 let g:bufferline_echo = 1
 " powerline symbols
 let g:airline_left_sep = ''
