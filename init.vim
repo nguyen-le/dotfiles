@@ -180,6 +180,7 @@ au BufRead *.ejs set filetype=eruby syntax=html
 
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_regexp = 1
+let g:ctrlp_max_files = 0
 "let g:airline#extensions#ctrlp#color_template = 'normal'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#symbol = '" "'
