@@ -29,14 +29,16 @@ bindkey -e
 #export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=7'
 
 autoload -U colors && colors
-export PATH="$HOME/.rbenv/bin:$PATH"
+#export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.linuxbrew/bin:$PATH"
+export PATH="$HOME/.linuxbrew/sbin:$PATH"
+export PATH="/home/nle/.linuxbrew/sbin:$PATH"
 #export GOPATH="$HOME/go"
 export GOROOT="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
-export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+#export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
 
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 #export PS1="%{$fg[cyan]%}%n%{$fg[green]%}@%m:%{$fg[magenta]%}%d%{$reset_color%}"$'\n'"%{$fg[red]%}$%{$reset_color%}"
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
@@ -46,6 +48,7 @@ echo -ne "\033]0;${PWD/#$HOME/~}\007"
 
 alias bashp='v .bash_profile'
 alias cdruby='cd ~/Documents/ruby'
+alias d='sudo docker'
 alias dev='grunt dev'
 alias food='open ~/Documents/home/eats_english.pdf'
 alias ga='git add'
@@ -62,6 +65,7 @@ alias j1='%1'
 alias j2='%2'
 alias j3='%3'
 alias j4='%4'
+alias j5='%5'
 alias jsctags='/usr/local/lib/node_modules/javascript-ctags/bin/javascript-ctags'
 alias lyn='learnyounode'
 alias ls='ls -GFh'
@@ -69,9 +73,7 @@ alias mysql='/usr/local/mysql/bin/mysql'
 alias mysqlstart='mysql.server start'
 alias mysqlstop='mysql.server stop'
 alias rails4.0='rails _4.0.8_'
-alias sshjenkins1='ssh -A root@10.80.0.79'
-alias sshjenkins2='ssh -A root@10.80.0.137'
-alias sshvm='ssh root@192.168.115.128'
+alias sshsiocloud='ssh root@nguyen.cloud2.siocloud.io'
 alias nv='nvim'
 alias nvv='nvim -O $(git show --name-only --format="")'
 alias gv='/Applications/mvim'
